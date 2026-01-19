@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridge Between Investor And Business People</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🌉 InvestBridge</div>
+            <ul class="nav-links">
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a onclick="showPage('login')">Login</a></li>
+                <li><a onclick="showPage('register')">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="home" class="page active">
+        <section class="hero">
+            <h1>Connect. Invest. Grow.</h1>
+            <p>Bridging the gap between innovative entrepreneurs and strategic investors</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="showRegisterForm('investor')">I'm an Investor</button>
+                <button class="btn btn-secondary" onclick="showRegisterForm('entrepreneur')">I'm an Entrepreneur</button>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Why Choose InvestBridge?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Smart Matching</h3>
+                        <p>Our platform connects investors with businesses that align with their investment criteria and goals.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Verified Community</h3>
+                        <p>Join a trusted network of verified entrepreneurs and investors committed to building successful ventures.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤝</div>
+                        <h3>End-to-End Support</h3>
+                        <p>Access business advisors, bankers, and resources to ensure your venture's success from start to finish.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="user-types">
+            <div class="container">
+                <h2 class="section-title">Join As</h2>
+                <div class="user-grid">
+                    <div class="user-card" onclick="showRegisterForm('investor')">
+                        <div style="font-size: 3rem;">💼</div>
+                        <h3>Investor</h3>
+                        <p>Find promising business opportunities and invest strategically</p>
+                    </div>
+                    <div class="user-card" onclick="showRegisterForm('entrepreneur')">
+                        <div style="font-size: 3rem;">🚀</div>
+                        <h3>Entrepreneur</h3>
+                        <p>Present your business ideas and secure funding for growth</p>
+                    </div>
+                    <div class="user-card" onclick="showRegisterForm('banker')">
+                        <div style="font-size: 3rem;">🏦</div>
+                        <h3>Banker</h3>
+                        <p>Provide loan solutions and financial services</p>
+                    </div>
+                    <div class="user-card" onclick="showRegisterForm('advisor')">
+                        <div style="font-size: 3rem;">📈</div>
+                        <h3>Business Advisor</h3>
+                        <p>Offer expertise and guidance to growing businesses</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Active Investors</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>1,200+</h3>
+                        <p>Entrepreneurs</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>₹50Cr+</h3>
+                        <p>Total Funded</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>300+</h3>
+                        <p>Successful Deals</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="login" class="page">
+        <section class="form-section active">
+            <div class="container">
+                <div class="form-container">
+                    <h2 class="section-title">Login</h2>
+                    <form id="loginForm" onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="loginEmail">Email</label>
+                            <input type="email" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginUserType">Login As</label>
+                            <select id="loginUserType" required>
+                                <option value="">Select User Type</option>
+                                <option value="investor">Investor</option>
+                                <option value="entrepreneur">Entrepreneur</option>
+                                <option value="banker">Banker</option>
+                                <option value="advisor">Business Advisor</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-submit">Login</button>
+                        <p style="text-align: center; margin-top: 1rem;">
+                            Don't have an account? <span class="link-style" onclick="showPage('register')">Register here</span>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="register" class="page">
+        <section class="form-section active">
+            <div class="container">
+                <div class="form-container">
+                    <h2 class="section-title" id="registerTitle">Register</h2>
+                    <form id="registerForm" onsubmit="handleRegister(event)">
+                        <input type="hidden" id="userType" value="">
+                        
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" required>
+                        </div>
+
+                        <div id="entrepreneurFields" class="hidden">
+                            <div class="form-group">
+                                <label for="businessCategory">Business Category</label>
+                                <select id="businessCategory">
+                                    <option value="">Select Category</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="services">Services</option>
+                                    <option value="education">Education</option>
+                                    <option value="agriculture">Agriculture</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="businessIdea">Business Idea Description</label>
+                                <textarea id="businessIdea" placeholder="Describe your business idea..."></textarea>
+                            </div>
+                        </div>
+
+                        <div id="investorFields" class="hidden">
+                            <div class="form-group">
+                                <label for="investmentRange">Investment Range (₹)</label>
+                                <input type="text" id="investmentRange" placeholder="e.g., 10,00,000 - 50,00,000">
+                            </div>
+                            <div class="form-group">
+                                <label for="investmentInterests">Investment Interests</label>
+                                <select id="investmentInterests">
+                                    <option value="">Select Industry</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="services">Services</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="bankerFields" class="hidden">
+                            <div class="form-group">
+                                <label for="bankName">Bank Name</label>
+                                <input type="text" id="bankName">
+                            </div>
+                            <div class="form-group">
+                                <label for="loanProducts">Loan Products Available</label>
+                                <textarea id="loanProducts" placeholder="Describe available loan products and terms..."></textarea>
+                            </div>
+                        </div>
+
+                        <div id="advisorFields" class="hidden">
+                            <div class="form-group">
+                                <label for="expertise">Area of Expertise</label>
+                                <input type="text" id="expertise" placeholder="e.g., Marketing, Finance, Operations">
+                            </div>
+                            <div class="form-group">
+                                <label for="experience">Years of Experience</label>
+                                <input type="number" id="experience" min="0">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-submit">Register Now</button>
+                        <p style="text-align: center; margin-top: 1rem;">
+                            Already have an account? <span class="link-style" onclick="showPage('login')">Login here</span>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 InvestBridge. All rights reserved. | Connecting Investors with Entrepreneurs</p>
+        </div>
+    </footer>
+<script src="script.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD4b7HEDK2pTFRy379A-362TGhUDoa3EHk",
+  authDomain: "bridge-connector-6229e.firebaseapp.com",
+  projectId: "bridge-connector-6229e",
+  storageBucket: "bridge-connector-6229e.appspot.com",
+  messagingSenderId: "409343845947",
+  appId: "1:409343845947:web:006246693c16a93f7b9e1e"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+window.handleRegister = async function(event) {
+  event.preventDefault();
+
+  const userType = document.getElementById("userType").value;
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const userCred = await createUserWithEmailAndPassword(auth, email, password);
+    await setDoc(doc(db, "users", userCred.user.uid), { name, email, phone, userType });
+    alert("Registration successful!");
+    showPage("home");
+  } catch (err) {
+    alert(err.message);
+  }
+};
+
+window.handleLogin = async function(event) {
+  event.preventDefault();
+
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    alert("Login successful!");
+    showPage("home");
+  } catch (err) {
+    alert(err.message);
+  }
+};
+</script>
+
+
+
+
+</body>
+</html>
